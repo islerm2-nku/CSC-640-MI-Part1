@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Controller\ItemsController;
 use App\Controller\TelemetryController;
 use App\Controller\SessionController;
 use FastRoute\RouteCollector;
@@ -12,6 +11,11 @@ $dispatcher = FastRoute\simpleDispatcher(function(RouteCollector $r) {
     $r->post('/api/telemetry/upload', [new TelemetryController(), 'uploadTelemetry']);
     $r->get('/api/sessions', [new SessionController(), 'getAllSessions']);
     $r->get('/api/sessions/{id}', [new SessionController(), 'getSession']);
+    $r->delete('/api/sessions/{id}', [new SessionController(), 'deleteSession']);
+    $r->get('/api/sessions/{id}/laps', [new SessionController(), 'getSessionLapCount']);
+    $r->get('/api/sessions/{id}/laps/{lapNumber}', [new SessionController(), 'getLapAttributeData']);
+    $r->get('/api/sessions/{id}/laps/{lapNumber}/averages', [new SessionController(), 'getLapAttributeAverages']);
+    $r->delete('/api/sessions/{id}/laps/{lapNumber}', [new SessionController(), 'deleteLapAttributeData']);
 });
 
 try {

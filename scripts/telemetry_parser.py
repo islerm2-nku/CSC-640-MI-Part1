@@ -11,8 +11,8 @@ import debugpy
 from add_telemetry import add_telemetry
 
 # Enable debugging only when running in Docker
-debugpy.listen(("0.0.0.0", 5678))
-debugpy.wait_for_client()  # Pause execution until debugger attaches
+#debugpy.listen(("0.0.0.0", 5678))
+#debugpy.wait_for_client()  # Pause execution until debugger attaches
 
 def parse_telemetry(file_path, attributes):
     try:
@@ -38,6 +38,9 @@ def to_json(self, attributes):
         'session_info': get_all_session_info(self),
         'telemetry': {}
     }
+    #always include lap data, this is requried to get starting and ending frame for a lap
+    if "Lap" not in attributes:
+        attributes.append("Lap")
     
     # Add all variables for all records
     for var_name in attributes:
