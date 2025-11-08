@@ -1,0 +1,332 @@
+{
+  "info": {
+    "name": "MyIracingProject",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1: Upload file",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/telemetry/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "telemetry",
+            "upload"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "telemetry_file",
+              "value": [
+                "/Users/mitchellisler/Desktop/NKU/csc-640-software-quality/CSC-640-MI-Part1/telemetry/porsche992rgt3_roadatlanta full_test1.ibt"
+              ],
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "Lap",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "RPM",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "Speed",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "LapDistPct",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "FuelLevel",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "RFpressure",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "RRpressure",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "LFpressure",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "LRpressure",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "PlayerIncidents",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "attributes[]",
+              "value": "OnPitRoad",
+              "disabled": false,
+              "type": "default"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "2: getAllSessions",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "3: getDetailedSessionInfo",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "4: getLaps",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}/laps",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}",
+            "laps"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "5: getAttributeByLap",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}/laps/{{lap}}?attribute=RPM",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}",
+            "laps",
+            "{{lap}}"
+          ],
+          "query": [
+            {
+              "key": "attribute",
+              "value": "RPM"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "6: getAverageAttributePerLap",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}/laps/{{lap}}/averages?attribute=RFPressure,LFPressure,RRPressure,LRPressure",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}",
+            "laps",
+            "{{lap}}",
+            "averages"
+          ],
+          "query": [
+            {
+              "key": "attribute",
+              "value": "RFPressure,LFPressure,RRPressure,LRPressure"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "7: deleteAttibutesForLap",
+      "event": [],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}/laps/{{lap}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}",
+            "laps",
+            "{{lap}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "8: deleteSession",
+      "event": [],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost/api/sessions/{{session}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "sessions",
+            "{{session}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "session",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "lap",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

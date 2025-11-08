@@ -1,10 +1,25 @@
 # CSC-640-MI
 
-IRacing authorization url: https://members-login.iracing.com/?ref=https%3A%2F%2Fmembers-ng.iracing.com%2Fdata
+Lightweight telemetry ingestion and analysis API for iRacing-style IBT files. Upload telemetry, query sessions, extract lap ranges and compute per-lap metrics.
 
-Documentation for all service methods can be accessed at https://members-ng.iracing.com/data/doc
-Each service has its own documentation page, like https://members-ng.iracing.com/data/doc/car
-Each service method also has a documentation page such as https://members-ng.iracing.com/data/doc/car/assets
+Quick pointers
+- API collection: `PostmanCollection.json` (import into Postman / Insomnia to explore endpoints)
+- Example telemetry files for the upload endpoint: the `telemetry/` folder contains sample `.ibt` files you can use to test uploads
+
+Getting started (Docker)
+
+Run the app and DB with Docker Compose and then run the migration:
+
+```bash
+docker-compose up --build -d
+docker-compose run --rm migrate
+```
+
+If you prefer, you can exec into the `web` container and run the migration directly:
+
+```bash
+docker-compose exec web php /var/www/html/db/create_db.php
+```
 
 ## Migrations
 
